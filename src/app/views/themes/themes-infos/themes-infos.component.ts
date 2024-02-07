@@ -80,7 +80,7 @@ export class ThemesInfosComponent implements OnInit {
     });
 
     this.filterForm = new FormGroup({
-      filter: new FormControl(10)
+      filter: new FormControl(20)
     })
   }
 
@@ -111,6 +111,7 @@ export class ThemesInfosComponent implements OnInit {
     this.themeService.getById(this.id).subscribe(
       (data)=>{
         this.themeDetail = data;
+        this.subThemesAllReserved = data.subThemes;
         //console.log("Object Theme........" +this.themeDetail.subThemes);
       },
       (err) => {
@@ -157,7 +158,6 @@ export class ThemesInfosComponent implements OnInit {
       (data)=>{
         this.isLoading = false;
         this.sousThemesAll = data;
-        this.subThemesAllReserved = data;
       },
       (err) => {
         this.alert.alertError(err.error !== null ? err.error.message : 'Impossible de récupérer les sous-thèmes');

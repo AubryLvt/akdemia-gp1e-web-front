@@ -11,12 +11,8 @@ body, html {
     position: relative;
     min-height: 15vh;
     margin-top: 25%;
-    background-image: url(../../../../assets/images/u24_div.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    background-color: #359F8C;
     overflow-y: hidden;
-    box-shadow: 0 0 0 200px rgba(0, 0, 0, 0.6) inset;
     flex-shrink: 0;
 }
 
@@ -24,6 +20,7 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
+    color: white;
 }
 
 .text-center {

@@ -10,6 +10,14 @@ import Swal from 'sweetalert2';
 })
 export class NavBarComponent implements OnInit {
 
+  dashboardLink: string = "/dashboard"
+  themesLink: string = '/dashboard/catalogues/themes';
+  formationsLink: string ="/dashboard/catalogues/formations";
+  formateursLink: string = "/dashboard/formateurs";
+  clientsLink: string = "/dashboard/clients";
+  sessionsLink: string = "/dashboard/sessions"
+  catalogueLink: string = "/dashboard/catalogues";
+
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {

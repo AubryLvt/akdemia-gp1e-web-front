@@ -1,4 +1,4 @@
-<h1 class="h2 text-primary mt-3">Infos du thème</h1>
+<h1 class="h2  mt-3">Infos du thème</h1>
 <hr class="lead mt-0" />
 <div class="row page-titles mx-0">
   <div class="col-md-12 mb-2">
@@ -105,17 +105,21 @@
       <div class="card-body" *ngIf="!isLoading">
         <div class="row mb-3">
           <div class="col-md-3 d-flex">
-            <label for="entries" class="me-2">Afficher</label>
-            <select
-              class="form-select form-select-sm me-2"
-              id="entries"
-              style="height: 38px"
-            >
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="30">30</option>
-            </select>
-            <label for="entries">entrées</label>
+            <form style="width: 100%" [formGroup]="filterForm">
+              <div class="d-flex align-items-baseline">
+                <label for="entries" class="form-label me-2">Nombre</label>
+                <select
+                  formControlName="filter"
+                  class="form-select-sm"
+                  id="entries"
+                >
+                  <option value="5">5</option>
+                  <option value="20">20</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+              </div>
+            </form>
           </div>
           <div class="col-md-5">&nbsp;</div>
           <div class="col-md-4">
@@ -148,10 +152,10 @@
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">Intitulé</th>
-                <th scope="col">Description</th>
-                <th scope="col">Date création</th>
-                <th scope="col">Action</th>
+                <th scope="col" class="head-title">Intitulé</th>
+                <th scope="col" class="head-title">Description</th>
+                <th scope="col" class="head-title">Date création</th>
+                <th scope="col" class="head-title">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -171,7 +175,7 @@
                     data-bs-toggle="modal"
                     data-bs-target="#sousThemeUpdateModal"
                     title="Modifier"
-                    ><i class="fa fa-pencil text-primary"></i></a
+                    ><i class="fa fa-pencil colored"></i></a
                   >&nbsp;
                   <a
                     href="javascript:void(0);"

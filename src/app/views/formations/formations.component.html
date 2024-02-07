@@ -1,7 +1,7 @@
 <div
   class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
 >
-  <h1 class="h2 text-primary">Formations</h1>
+  <h1 class="h2">Formations</h1>
   <div class="btn-toolbar mb-2 mb-md-0"></div>
 </div>
 
@@ -230,12 +230,12 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">Photo</th>
-                  <th scope="col">Intitulé</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Date création</th>
-                  <th scope="col">Prix</th>
-                  <th scope="col">Action</th>
+                  <th scope="col" class="head-title">Photo</th>
+                  <th scope="col" class="head-title">Intitulé</th>
+                  <th scope="col" class="head-title">Description</th>
+                  <th scope="col" class="head-title">Date création</th>
+                  <th scope="col" class="head-title">Prix</th>
+                  <th scope="col" class="head-title">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -265,7 +265,7 @@
                   <td>
                     <span
                       (click)="goToUpdate(training.id)"
-                      class="text-primary"
+                      class="colored"
                       title="Modifier"
                     >
                       <i class="fa fa-pencil"></i> </span

@@ -1,4 +1,4 @@
-<h1 class="h2 text-primary mt-3">Thèmes</h1>
+<h1 class="h2  mt-3">Thèmes</h1>
 <hr class="lead mt-0" />
 <div class="row tab-content">
   <div
@@ -88,6 +88,7 @@
       <div
         class="card-body"
         *ngIf="themesAllReserved.length > 0 || themesAll.length > 0"
+        
       >
         <div class="row mb-3 justify-content-between">
           <div class="col-md-3">
@@ -136,11 +137,11 @@
         <div class="table table-responsive">
           <table class="table">
             <thead>
-              <tr>
-                <th scope="col">Intitulé</th>
-                <th scope="col">Description</th>
-                <th scope="col">Date création</th>
-                <th scope="col" class="text-center">Action</th>
+              <tr >
+                <th scope="col" class="head-title">Intitulé</th>
+                <th scope="col" class="head-title">Description</th>
+                <th scope="col" class="head-title">Date création</th>
+                <th scope="col" class="text-center head-title">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -155,7 +156,7 @@
                 <td>{{ firstTheme.creationDate | date : "dd-MM-yyyy" }}</td>
                 <td class="text-center" style="cursor: pointer">
                   <i
-                    class="fa fa-pencil text-primary"
+                    class="fa fa-pencil colored"
                     (click)="themeEdit(firstTheme.id)"
                     data-bs-toggle="modal"
                     data-bs-target="#themeUpdateModal"

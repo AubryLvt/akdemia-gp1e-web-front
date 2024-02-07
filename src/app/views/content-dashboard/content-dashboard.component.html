@@ -1,112 +1,84 @@
-<h1 class="h2 my-2">Dashboard</h1>
-<div class="d-flex justify-content-center align-items-center">
-  <div class="d-flex align-items-center p-3  rounded-2 me-2 shadow">
-    <i class="fas fa-wallet fa-4x text-bg-light"></i>
-    <div class="ms-4">
-      <h6 class="lead">Themes</h6>
-      <h4 class="text-primary text-center">{{listeTheme.length}}</h4>
-    </div>
-  </div>
-  <div class="d-flex align-items-center p-3  rounded-2 me-2 shadow">
-    <i class="fas fa-book fa-4x text-bg-light"></i>
-    <div class="ms-4">
-      <h6 class="lead">Formations</h6>
-      <h4 class="text-primary text-center">{{listeFormation.length}}</h4>
-    </div>
-  </div>
-  <div class="d-flex align-items-center p-3  rounded-2 me-2 shadow">
-    <i class="fas fa-users fa-4x text-bg-light"></i>
-    <div class="ms-4">
-      <h6 class="lead">Formateurs</h6>
-      <h4 class="text-primary text-center">{{listeFormateur.length}}</h4>
-    </div>
-  </div>
-  <div class="d-flex align-items-center p-3  rounded-2 me-2 shadow">
-    <i class="fas fa-graduation-cap fa-4x text-bg-light"></i>
-    <div class="ms-4">
-      <h6 class="lead">Participants</h6>
-      <h4 class="text-primary text-center">0</h4>
-    </div>
-  </div>
-  <div class="d-flex align-items-center p-3  rounded-2 me-2 shadow">
-    <i class="fas fa-calendar fa-4x text-bg-light"></i>
-    <div class="ms-4">
-      <h6 class="lead">Session</h6>
-      <h4 class="text-primary text-center">0</h4>
-    </div>
-  </div>
-</div>
-<!--<div class="col-xl-12 col-xxl-12 col-sm-12">
-  <div class="row">
-    <div class="col-xl-4 col-xxl-4 col-sm-6">
-      <div class="widget-stat card">
-          <div class="card-body">
-              <div class="icon-container" style="margin-left: 20px;">
-                  <i class="fas fa-wallet" style="font-size: 90px;"></i>
-              </div>
-              <div class="text-container" style="margin-left: 150px; margin-top: -80px;">
-                  <h3 class="card-title fw-bold">Themes</h3>
-                  <h4>Total {{listeTheme!.length}}</h4>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="col-xl-4 col-xxl-4 col-sm-6">
-    <div class="widget-stat card">
-        <div class="card-body">
-            <div class="icon-container" style="margin-left: 20px;">
-                <i class="fas fa-book" style="font-size: 90px;"></i>
-            </div>
-            <div class="text-container" style="margin-left: 150px; margin-top: -80px;">
-                <h3 class="card-title fw-bold">Formations</h3>
-                <h4>Total {{listeFormation!.length}}</h4>
-            </div>
+<h1 class="h2 my-2 welcome-message text-center logo-style">
+  BIENVENUE,CHER ADMIN !
+</h1>
+<div class="justify-content-column align-items-column mt-3">
+  <h2 class="text-center">
+    Ensemble, optimisons la gestion pour une expérience de formation fluide et
+    efficace
+  </h2>
+  <div class="col-lg-12 mt-5">
+    <div class="row tab-content">
+      <div
+        id="list-view"
+        class="tab-pane fade active show col-lg-12"
+        role="tabpanel"
+      >
+      <div class="row mt-3 align-items-center justify-content-center">
+        <div class="col-md-6">
+          <h4 class="text mt-3">Liste des formations</h4>
         </div>
-    </div>
-</div>
-<div class="col-xl-4 col-xxl-4 col-sm-6">
-  <div class="widget-stat card">
-      <div class="card-body">
-          <div class="icon-container" style="margin-left: 20px;">
-              <i class="fas fa-graduation-cap" style="font-size: 90px;"></i>
-          </div>
-          <div class="text-container" style="margin-left: 150px; margin-top: -80px;">
-              <h3 class="card-title fw-bold">Formateurs</h3>
-              <h4>Total {{listeFormateur!.length}}</h4>
-          </div>
+        <div class="col-md-6 text-end">
+          <button type="button" class="btn btn-more" routerLink="/dashboard/catalogues/formations">Voir +</button>
+        </div>
       </div>
+        <div class="table-responsive mt-3">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" class="head-title">Photo</th>
+                <th scope="col" class="head-title">Intitulé</th>
+                <th scope="col" class="head-title">Description</th>
+                <th scope="col" class="head-title">Date création</th>
+                <th scope="col" class="head-title">Prix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let training of listeFormation| paginate: {
+                    itemsPerPage: 20,
+                    currentPage: page,
+                   }; "
+              >
+                <td>
+                  <img
+                    [src]="'data:image/png;base64,' + training.logo"
+                    class="rounded-circle"
+                    width="80"
+                    height="80"
+                    alt=""
+                  />
+                </td>
+                <td>{{ training.title }}</td>
+                <!-- Utilisez le champ approprié pour le titre de la formation -->
+                <td>{{ getSubString(training.description) }}</td>
+                <!-- Utilisez le champ approprié pour la description de la formation -->
+                <td>{{ training.creationDate | date : "dd-MM-yyyy" }}</td>
+                <!-- Utilisez le champ approprié pour la date de la formation -->
+                <td>{{ training.trainingPrice }} €</td>
+                <!-- Utilisez le champ approprié pour le prix de la formation -->
+              </tr>
+            </tbody>
+          </table>
+         
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-4 text-end" style="float: right; width: 100%;">
+            <pagination-controls
+              (pageChange)="handlePageChange($event)"
+              (pageBoundsCorrection)="handlePageChange($event)"
+              previousLabel="Précédent"
+              nextLabel="Suivant"
+              screenReaderPaginationLabel="Pagination"
+              screenReaderPageLabel="page"
+              screenReaderCurrentLabel="Vous êtes à la page"
+            >
+            </pagination-controls>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid waiting" *ngIf="isLoading">
+        <span class="spinner-border"></span>
+      </div>
+    </div>
   </div>
 </div>
-  </div>
-</div>
-<p></p>
-<div class="col-xl-12 col-xxl-12 col-sm-12">
-  <div class="row">
-    <div class="col-xl-4 col-xxl-4 col-sm-6">
-      <div class="widget-stat card">
-          <div class="card-body">
-              <div class="icon-container" style="margin-left: 20px;">
-                  <i class="fas fa-users" style="font-size: 90px;"></i>
-              </div>
-              <div class="text-container" style="margin-left: 150px; margin-top: -80px;">
-                  <h3 class="card-title fw-bold">Participants</h3>
-                  <h4>Total 0</h4>
-              </div>
-          </div>
-      </div>
-    </div>
-    <div class="col-xl-4 col-xxl-4 col-sm-6">
-      <div class="widget-stat card">
-          <div class="card-body">
-              <div class="icon-container" style="margin-left: 20px;">
-                  <i class="fas fa-hourglass-half" style="font-size: 90px;"></i>
-              </div>
-              <div class="text-container" style="margin-left: 150px; margin-top: -80px;">
-                  <h3 class="card-title fw-bold">Sessions</h3>
-                  <h4>Total 0</h4>
-              </div>
-          </div>
-      </div>
-    </div>
-  </div>
-</div>-->

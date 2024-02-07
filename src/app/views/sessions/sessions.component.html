@@ -1,7 +1,7 @@
 <div
   class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
 >
-  <h1 *ngIf="!showForm" class="h2 text-primary">Sessions</h1>
+  <h1 *ngIf="!showForm" class="h2">Sessions</h1>
   <h5 *ngIf="showForm" class="lead">{{ title }}</h5>
 </div>
 
@@ -301,14 +301,14 @@
             <table *ngIf="!showIntraSess" class="table">
               <thead>
                 <tr>
-                  <th scope="col">Code</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Min participants</th>
-                  <th scope="col">Statut</th>
-                  <th scope="col">Durée (J)</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Lieu</th>
-                  <th scope="col" class="text-center">Action</th>
+                  <th scope="col" class="head-title">Code</th>
+                  <th scope="col" class="head-title">Description</th>
+                  <th scope="col" class="head-title">Min participants</th>
+                  <th scope="col" class="head-title">Statut</th>
+                  <th scope="col" class="head-title">Durée (J)</th>
+                  <th scope="col" class="head-title">Date</th>
+                  <th scope="col" class="head-title">Lieu</th>
+                  <th scope="col" class="text-center head-title">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -333,7 +333,7 @@
                     &nbsp;
                     <span
                       (click)="editintertSession(session.id)"
-                      class="text-primary"
+                      class="colored"
                       title="Modifier"
                     >
                       <i class="fa fa-pencil"></i> </span
@@ -354,13 +354,13 @@
             <table *ngIf="showIntraSess" class="table">
               <thead>
                 <tr>
-                  <th scope="col">Code</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Statut</th>
-                  <th scope="col">Durée (J)</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Lieu</th>
-                  <th scope="col" class="text-center">Action</th>
+                  <th scope="col" class="head-title">Code</th>
+                  <th scope="col" class="head-title">Description</th>
+                  <th scope="col" class="head-title">Statut</th>
+                  <th scope="col" class="head-title">Durée (J)</th>
+                  <th scope="col" class="head-title">Date</th>
+                  <th scope="col" class="head-title">Lieu</th>
+                  <th scope="col" class="text-center head-title">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -384,10 +384,10 @@
                     &nbsp;
                     <span
                       (click)="editintratSession(session.id)"
-                      class="text-primary"
+                      class="colored"
                       title="Modifier"
                     >
-                      <i class="fa fa-pencil text-primary"></i> </span
+                      <i class="fa fa-pencil colored"></i> </span
                     >&nbsp;
                     <span
                       (click)="deleteIntraSession(session.id)"

@@ -90,12 +90,12 @@
             <table *ngIf="showPart" class="table">
               <thead>
                 <tr>
-                  <th scope="col">Nom</th>
-                  <th scope="col">Prénom</th>
-                  <th scope="col">Metier</th>
-                  <th scope="col">Sexe</th>
-                  <th scope="col">Date création</th>
-                  <th scope="col">Action</th>
+                  <th scope="col" class="head-title">Nom</th>
+                  <th scope="col" class="head-title">Prénom</th>
+                  <th scope="col" class="head-title">Metier</th>
+                  <th scope="col" class="head-title">Sexe</th>
+                  <th scope="col" class="head-title">Date création</th>
+                  <th scope="col" class="head-title">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -117,7 +117,7 @@
                       class="text-success"
                       (click)="goToEditPart(firstparticular.id)"
                       title="Modifier"
-                      ><i class="fa fa-pencil text-primary"></i></span
+                      ><i class="fa fa-pencil colored"></i></span
                     >&nbsp;
                     <span
                       class="text-danger"
@@ -133,12 +133,12 @@
             <table *ngIf="showEmp" class="table">
               <thead>
                 <tr>
-                  <th scope="col">Nom</th>
-                  <th scope="col">Prénom</th>
-                  <th scope="col">Téléphone</th>
-                  <th scope="col">Sexe</th>
-                  <th scope="col">Date création</th>
-                  <th scope="col">Action</th>
+                  <th scope="col" class="head-title">Nom</th>
+                  <th scope="col" class="head-title">Prénom</th>
+                  <th scope="col" class="head-title">Téléphone</th>
+                  <th scope="col" class="head-title">Sexe</th>
+                  <th scope="col" class="head-title">Date création</th>
+                  <th scope="col" class="head-title">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -158,7 +158,7 @@
                       class="text-success"
                       (click)="goToEditClt(empl.id)"
                       title="Modifier"
-                      ><i class="fa fa-pencil text-primary"></i></span
+                      ><i class="fa fa-pencil colored"></i></span
                     >&nbsp;
                     <span
                       class="text-danger"
@@ -174,10 +174,10 @@
             <table *ngIf="showCmp" class="table">
               <thead>
                 <tr>
-                  <th scope="col">Nom</th>
-                  <th scope="col">Activity</th>
-                  <th scope="col">Date création</th>
-                  <th scope="col">Action</th>
+                  <th scope="col" class="head-title">Nom</th>
+                  <th scope="col" class="head-title">Activity</th>
+                  <th scope="col" class="head-title">Date création</th>
+                  <th scope="col" class="head-title">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -195,7 +195,7 @@
                       class="text-success"
                       (click)="goToEditCpy(firstcompany.id)"
                       title="Modifier"
-                      ><i class="fa fa-pencil text-primary"></i></span
+                      ><i class="fa fa-pencil colored"></i></span
                     >&nbsp;
                     <span
                       class="text-danger"
