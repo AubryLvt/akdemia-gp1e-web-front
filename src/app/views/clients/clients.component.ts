@@ -25,6 +25,9 @@ export class ClientsComponent implements OnInit {
   showCmp: boolean = false;
   showEmp: boolean = false;
   showPart: boolean = true;
+  searchVisibility!: boolean;
+
+
 
     //for search
     particularReserved: Particular[] = [];
@@ -53,6 +56,7 @@ export class ClientsComponent implements OnInit {
     this.getAllParticipants();
     this.getAllCompanies();
     this.initForm();
+    this.searchVisibility = false;
   }
 
 
@@ -64,6 +68,10 @@ export class ClientsComponent implements OnInit {
     this.filterForm = new FormGroup({
       filter: new FormControl(20)
     })
+  }
+
+  changeSearchVisibility() {
+    this.searchVisibility = !this.searchVisibility;
   }
 
   handlePageChange(event: number) {

@@ -16,26 +16,28 @@ export class FormateursComponent implements OnInit {
   trainers: Trainer[] = [];
   isLoading!: boolean;
 
-      //for search
-      allTrainersReserved: Trainer[] = [];
-      trainerSearch: Trainer[] = [];
-      //for filter
-      filterForm!: FormGroup;
-      searchForm!: FormGroup;
-      //for pagination
-      page: number = 1;
-      position: number = 1;
+  //for search
+  allTrainersReserved: Trainer[] = [];
+  trainerSearch: Trainer[] = [];
+  //for filter
+  filterForm!: FormGroup;
+  searchForm!: FormGroup;
+  //for pagination
+  page: number = 1;
+  position: number = 1;
+  searchVisibility!: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private trainerService: TrainerService,
     private alert: AlertService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getAllTrainers();
     this.initForm();
+    this.searchVisibility = false;
   }
 
   getAllTrainers() {
@@ -53,9 +55,9 @@ export class FormateursComponent implements OnInit {
     this.trainers = this.allTrainersReserved;
     let table: Trainer[] = [];
     for (let i = 0; i < this.trainers.length; i++) {
-      if (this.trainers[i].email.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase()) 
-      || this.trainers[i].firstname.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())
-      || this.trainers[i].lastname.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())) {
+      if (this.trainers[i].email.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())
+        || this.trainers[i].firstname.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())
+        || this.trainers[i].lastname.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())) {
         table.push(this.trainers[i]);
       }
     }
@@ -64,6 +66,11 @@ export class FormateursComponent implements OnInit {
     } else {
       this.trainers = table;
     }
+  }
+
+
+  changeSearchVisibility() {
+    this.searchVisibility = !this.searchVisibility;
   }
 
   handlePageChange(event: number) {
@@ -96,7 +103,7 @@ export class FormateursComponent implements OnInit {
       confirmButtonText: 'Oui, Supprimer!',
       allowOutsideClick: false,
     }).then((result) => {
-      if(result.isConfirmed) {
+      if (result.isConfirmed) {
         this.trainerService.delete(id).subscribe(
           () => {
             this.getAllTrainers();

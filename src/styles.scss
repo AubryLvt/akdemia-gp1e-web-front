@@ -37,8 +37,40 @@ th {
   color: #359F8C;
 }
 
-.head-title{
-  background-color: #359F8C;
+// search 
+.search {
+  position: relative;
+  height: 40px;
+}
+.search.active .input {
+  background-color: white;
+  border: 0;
+  font-size: 14px;
   padding: 15px;
-  color: white;
+  height: 40px;
+  float: right;
+  border: solid 1px #359F8C;
+  width: 200px;
+  box-shadow: 5px 5px 10px #359F8C;
+}
+
+.search-btn {
+  background-color: #359F8C;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+}
+
+.search.active .btn {
+  transform: translateX(150px);
+}
+
+.search .input {
+  border-radius: 40px;
 }

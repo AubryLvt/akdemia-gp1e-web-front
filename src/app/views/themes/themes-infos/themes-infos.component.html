@@ -24,7 +24,7 @@
           class="btn btn-primary"
           data-bs-toggle="modal"
           data-bs-target="#sousThemeModal"
-          style="float: right; margin-top: -40px"
+          style="float: right; margin-top: -30px"
         >
           Joindre un sous-thème
         </button>
@@ -123,29 +123,13 @@
           </div>
           <div class="col-md-5">&nbsp;</div>
           <div class="col-md-4">
-            <form
-              [formGroup]="searchForm"
-              style="position: relative; width: 350px; float: right"
-            >
-              <i
-                class="fas fa-search"
-                style="
-                  position: absolute;
-                  left: 10px;
-                  top: 50%;
-                  transform: translateY(-50%);
-                "
-              ></i>
-              <input
-                formControlName="keyWord"
-                (input)="searchByName()"
-                class="form-control"
-                type="search"
-                placeholder="Recherche"
-                aria-label="Search"
-                style="padding-left: 30px"
-              />
-            </form>
+            <div [ngClass]="searchVisibility?'search active mb-3':'search mb-3'" >
+              <form [formGroup]="searchForm">
+              <input [ngClass]="searchVisibility?'input':'hidden'" (input)="searchByName()" type="search" placeholder="Intitulé..." formControlName="keyWord">
+              </form>
+              <button (click)="changeSearchVisibility()" class="search-btn">
+                <i class="fa fa-search text-light"></i>
+              </button>
           </div>
         </div>
         <div class="table-responsive">

@@ -43,6 +43,7 @@ export class ThemesInfosComponent implements OnInit {
   subThemeUpdateForm!: FormGroup;
   isLoading!: boolean;
   isFormSubThemeLoading!: boolean;
+  searchVisibility!: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -66,6 +67,7 @@ export class ThemesInfosComponent implements OnInit {
       this.handlerGetThemeById();
       this.getAllSubThemes();
       this.innitForm();
+      this.searchVisibility = false;
   }
 
   innitForm() {
@@ -101,6 +103,10 @@ export class ThemesInfosComponent implements OnInit {
     } else {
       this.sousThemesAll = table;
     }
+  }
+
+  changeSearchVisibility() {
+    this.searchVisibility = !this.searchVisibility;
   }
 
   handlePageChange(event: number) {

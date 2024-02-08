@@ -8,7 +8,7 @@
 <body>
 
 <div class="container">
-  <h2 class="welcome-heading">Bienvenue</h2>
+  <h2 class="welcome-heading logo-style">Bienvenue</h2>
   <div class="login-container">
     <h2>Connexion</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -23,7 +23,7 @@
                formControlName="password" required>
       </div>
       <div class="form-group">
-        <button [disabled]="loginForm.invalid || isLoading" type="submit" class="btn btn-primary btn-login"><span *ngIf="isLoading" class="spinner-border"></span><span [ngClass]="isLoading ? 'hidden' : ''" >&nbsp;Connexion</span></button>
+        <button [disabled]="loginForm.invalid || isLoading" type="submit" class="btn  btn-login"><span *ngIf="isLoading" class="spinner-border"></span><span [ngClass]="isLoading ? 'hidden' : ''" >&nbsp;Connexion</span></button>
       </div>
     </form>
   </div>

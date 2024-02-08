@@ -1,14 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {tap} from 'rxjs';
-import {Theme} from 'src/app/models/Theme';
-import {ThemeService} from 'src/app/services/theme.service';
-import {animate, state, style, transition, trigger} from '@angular/animations';
-import {NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
-import {Router} from '@angular/router';
-import {UtilsService} from "../../services/utils.service";
-import {ConfirmBoxEvokeService} from "@costlydeveloper/ngx-awesome-popup";
-import {ToastrService} from "ngx-toastr";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { tap } from 'rxjs';
+import { Theme } from 'src/app/models/Theme';
+import { ThemeService } from 'src/app/services/theme.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
+import { UtilsService } from "../../services/utils.service";
+import { ConfirmBoxEvokeService } from "@costlydeveloper/ngx-awesome-popup";
+import { ToastrService } from "ngx-toastr";
 import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
@@ -17,13 +17,13 @@ import { AlertService } from 'src/app/services/alert.service';
   styleUrls: ['./themes.component.scss'],
   animations: [
     trigger('flyInOut', [
-      state('in', style({transform: 'translateX(0)'})),
+      state('in', style({ transform: 'translateX(0)' })),
       transition('void => *', [
-        style({transform: 'translateX(-100%)'}),
+        style({ transform: 'translateX(-100%)' }),
         animate('0.5s ease-in')
       ]),
       transition('* => void', [
-        animate('0.5s ease-out', style({transform: 'translateX(100%)'}))
+        animate('0.5s ease-out', style({ transform: 'translateX(100%)' }))
       ])
     ])
   ],
@@ -37,6 +37,7 @@ export class ThemesComponent implements OnInit {
   themeForm!: FormGroup;
   themeValue!: Theme;
   modalRef!: NgbModalRef;
+  searchVisibility!: boolean;
   //for search
   themesAll: Theme[] = [];
   themesAllReserved: Theme[] = [];
@@ -61,12 +62,12 @@ export class ThemesComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private alertService: ConfirmBoxEvokeService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.innitForm();
     this.getAllThemes();
-
+    this.searchVisibility = false;
   }
 
   selectPage(page: string) {
@@ -110,6 +111,10 @@ export class ThemesComponent implements OnInit {
     } else {
       this.themesAll = table;
     }
+  }
+  
+  changeSearchVisibility() {
+    this.searchVisibility = !this.searchVisibility;
   }
 
   handlePageChange(event: number) {
@@ -171,13 +176,13 @@ export class ThemesComponent implements OnInit {
         if (resp.success) {
           this.themeService.delete(id).subscribe(() => {
             this.getAllThemes();
-            this.toastService.success('Supprimé avec succès' );
-            this.toastService.success('Suppression effectuée avec succès' );
+            this.toastService.success('Supprimé avec succès');
+            this.toastService.success('Suppression effectuée avec succès');
           });
         }
       },
       (err) => {
-        this.toastService.error(err.error !== null? err.error.message : 'Impossible de supprimer le thème');
+        this.toastService.error(err.error !== null ? err.error.message : 'Impossible de supprimer le thème');
       }
     )
   }
@@ -192,9 +197,9 @@ export class ThemesComponent implements OnInit {
         subThemes: data.subThemes
       });
     },
-    (err) => {
-      this.alert.alertError(err.error !== null ? err.error.message : 'Impossible de modifier');
-    });
+      (err) => {
+        this.alert.alertError(err.error !== null ? err.error.message : 'Impossible de modifier');
+      });
   }
 
   updateTheme() {

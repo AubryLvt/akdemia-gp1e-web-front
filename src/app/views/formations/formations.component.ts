@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
-import {DomSanitizer} from '@angular/platform-browser';
-import {SubTheme} from 'src/app/models/SubTheme';
-import {Training} from 'src/app/models/Training';
-import {AlertService} from 'src/app/services/alert.service';
-import {SubThemeService} from 'src/app/services/sub-theme.service';
-import {TrainingService} from 'src/app/services/training.service';
-import {tap} from "rxjs";
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
+import { SubTheme } from 'src/app/models/SubTheme';
+import { Training } from 'src/app/models/Training';
+import { AlertService } from 'src/app/services/alert.service';
+import { SubThemeService } from 'src/app/services/sub-theme.service';
+import { TrainingService } from 'src/app/services/training.service';
+import { tap } from "rxjs";
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { UtilsService } from 'src/app/services/utils.service';
@@ -27,16 +27,17 @@ export class FormationsComponent implements OnInit {
   allTrainings: Training[] = [];
   isLoading!: boolean;
   isFormTrainingLoading!: boolean;
+  searchVisibility!: boolean;
 
-    //for search
-    allTrainingsReserved: Training[] = [];
-    trainingSearch: Training[] = [];
-    //for filter
-    filterForm!: FormGroup;
-    searchForm!: FormGroup;
-    //for pagination
-    page: number = 1;
-    position: number = 1;
+  //for search
+  allTrainingsReserved: Training[] = [];
+  trainingSearch: Training[] = [];
+  //for filter
+  filterForm!: FormGroup;
+  searchForm!: FormGroup;
+  //for pagination
+  page: number = 1;
+  position: number = 1;
 
   constructor(
     private trainingService: TrainingService,
@@ -54,6 +55,8 @@ export class FormationsComponent implements OnInit {
     this.getAllTraining();
     this.getAllSubThemes();
     this.initForm();
+
+    this.searchVisibility = false;
   }
 
   searchByName() {
@@ -71,6 +74,10 @@ export class FormationsComponent implements OnInit {
     }
   }
 
+  changeSearchVisibility() {
+    this.searchVisibility = !this.searchVisibility;
+  }
+
   handlePageChange(event: number) {
     this.page = event;
   }
@@ -79,11 +86,11 @@ export class FormationsComponent implements OnInit {
     this.isLoading = true;
     this.trainingService.getAll()
       .subscribe(
-        next => {this.allTrainings = next; this.allTrainingsReserved = next; this.isLoading = false;},
+        next => { this.allTrainings = next; this.allTrainingsReserved = next; this.isLoading = false; },
         (err) => {
           this.alert.alertError(err.error !== null ? err.error.message : 'Impossible de récupérer les particuliers');
         }
-  )
+      )
   }
 
   toggleDown() {
@@ -174,11 +181,11 @@ export class FormationsComponent implements OnInit {
     }
   }
 
-  goToUpdate(id: number){
+  goToUpdate(id: number) {
     this.router.navigate(['dashboard/catalogues/formations/update/', id]);
   }
 
-  deleteTraining(id: number){
+  deleteTraining(id: number) {
     Swal.fire({
       title: 'Etes-vous sûr de vouloir effectuer cette suppression?',
       text: 'Cette action est irréversible!',
@@ -199,14 +206,14 @@ export class FormationsComponent implements OnInit {
             'success'
           );
         },
-        (err) => {
-          this.alert.alertError(err.error !== null ? err.error.message : 'Impossible de supprimer la formation');
-        });
+          (err) => {
+            this.alert.alertError(err.error !== null ? err.error.message : 'Impossible de supprimer la formation');
+          });
       }
     });
   }
 
-  resetTraining(){
+  resetTraining() {
     this.formationForm.reset();
     this.nouvelleFormationVisible = false;
   }
@@ -216,6 +223,6 @@ export class FormationsComponent implements OnInit {
   }
 
   goToTheme() {
-    window.location.replace('catalogues/themes');
+    window.location.replace('dashboard/catalogues/themes');
   }
 }

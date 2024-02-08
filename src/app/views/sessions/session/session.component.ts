@@ -15,7 +15,7 @@ import { InterSessionService } from 'src/app/services/inter-session.service';
 import { IntraSessionService } from 'src/app/services/intra-session.service';
 import { ParticularSubscriptionService } from 'src/app/services/particular-subscription.service';
 import { ParticularService } from 'src/app/services/particular.service';
-import { SessionService } from 'src/app/services/session.service' ;
+import { SessionService } from 'src/app/services/session.service';
 import Swal from 'sweetalert2';
 
 
@@ -36,6 +36,7 @@ export class SessionComponent implements OnInit {
   allParticularSubscriptionReserved: ParticularSubscription[] = [];
   allEmployeeSubcriptionSearch: EmployeeSubscription[] = [];
   allParticularSubscriptionSearch: ParticularSubscription[] = [];
+  searchVisibility!: boolean;
   //for filter
   filterForm!: FormGroup;
   searchForm!: FormGroup;
@@ -97,6 +98,8 @@ export class SessionComponent implements OnInit {
 
     // this.getAllUsers();
     this.innitForm();
+
+    this.searchVisibility = false;
   }
 
   getAllEmployees() {
@@ -105,13 +108,17 @@ export class SessionComponent implements OnInit {
         this.allEmployees = result;
       },
       error: (err) => {
-        this.alert.alertError(err.error.message?err.error.message:'Impossible de récupérer les employés');
+        this.alert.alertError(err.error.message ? err.error.message : 'Impossible de récupérer les employés');
       }
     })
   }
 
   handlePageChange(event: number) {
     this.page = event;
+  }
+
+  changeSearchVisibility() {
+    this.searchVisibility = !this.searchVisibility;
   }
 
   getAllParticulars() {
@@ -147,7 +154,7 @@ export class SessionComponent implements OnInit {
         this.allParticularSubscriptions = result.particularSubscriptions;
         this.allParticularSubscriptionReserved = result.particularSubscriptions;
         this.date = this.interSessionDetail.date;
-        this.progression = this.getProgression()+'%';
+        this.progression = this.getProgression() + '%';
         this.isLoading = false;
       },
       error: (err) => {
@@ -173,7 +180,7 @@ export class SessionComponent implements OnInit {
         this.allEmployeeSubcriptions = result.employeeSubscriptions;
         this.allEmployeeSubcriptionReserved = result.employeeSubscriptions;
         this.date = this.intraSessionDetail.date;
-        this.progression = this.getProgression()+'%';
+        this.progression = this.getProgression() + '%';
         this.isLoading = false;
       },
       error: (err) => {
@@ -191,14 +198,14 @@ export class SessionComponent implements OnInit {
   }
 
   searchByName() {
-  
-    if(this.isInterSession){
+
+    if (this.isInterSession) {
       this.allParticularSubscriptions = this.allParticularSubscriptionReserved;
       let table: ParticularSubscription[] = [];
       for (let i = 0; i < this.allParticularSubscriptions.length; i++) {
-        if (this.allParticularSubscriptions[i].particular.firstname.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase()) 
-        || this.allParticularSubscriptions[i].particular.lastname.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())
-        || this.allParticularSubscriptions[i].particular.email.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())) {
+        if (this.allParticularSubscriptions[i].particular.firstname.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())
+          || this.allParticularSubscriptions[i].particular.lastname.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())
+          || this.allParticularSubscriptions[i].particular.email.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())) {
           table.push(this.allParticularSubscriptions[i]);
         }
       }
@@ -209,13 +216,13 @@ export class SessionComponent implements OnInit {
       }
     }
     //for intra session
-    else{
+    else {
       this.allEmployeeSubcriptions = this.allEmployeeSubcriptionReserved;
       let table: EmployeeSubscription[] = [];
       for (let i = 0; i < this.allEmployeeSubcriptions.length; i++) {
-        if (this.allEmployeeSubcriptions[i].employee.firstname.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase()) 
-        || this.allEmployeeSubcriptions[i].employee.lastname.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())
-        || this.allEmployeeSubcriptions[i].employee.email.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())) {
+        if (this.allEmployeeSubcriptions[i].employee.firstname.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())
+          || this.allEmployeeSubcriptions[i].employee.lastname.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())
+          || this.allEmployeeSubcriptions[i].employee.email.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())) {
           table.push(this.allEmployeeSubcriptions[i]);
         }
       }
@@ -321,7 +328,7 @@ export class SessionComponent implements OnInit {
       return "échec lors de la suppression"
   }
 
-  getProgression():number {
+  getProgression(): number {
     const date2 = new Date();
     const todayDate = new Date(this.date);
     const diffMillis = todayDate.getTime() - date2.getTime();
