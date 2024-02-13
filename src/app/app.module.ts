@@ -1,47 +1,27 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { NgModule } from "@angular/core";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgxAwesomePopupModule, ConfirmBoxConfigModule } from "@costlydeveloper/ngx-awesome-popup";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgSelectModule } from "@ng-select/ng-select";
+import { NgxPaginationModule } from "ngx-pagination";
+import { ToastrModule } from "ngx-toastr";
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { AuthInterceptor } from "./interceptor/auth.interceptor";
+import { LoginComponent } from "./public/login/login.component";
+import { ClientsComponent } from "./views/clients/clients.component";
+import { InsertClientComponent } from "./views/clients/insert-client/insert-client.component";
 
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-//import { FormationsComponent } from './views/formations/formations.component';
-import {FormateursComponent} from './views/formateurs/formateurs.component';
-import {ClientsComponent} from './views/clients/clients.component';
-import {SessionsComponent} from './views/sessions/sessions.component';
-//import { ThemesInfosComponent } from './views/themes/themes-infos/themes-infos.component';
-import {InsertClientComponent} from './views/clients/insert-client/insert-client.component';
-import {InsertFormateurComponent} from './views/formateurs/insert-formateur/insert-formateur.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {ToastrModule} from 'ngx-toastr';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {NgSelectModule} from '@ng-select/ng-select';
-import {NgxPaginationModule} from 'ngx-pagination';
-import {SessionComponent} from './views/sessions/session/session.component';
-import {ConfirmBoxConfigModule, NgxAwesomePopupModule} from "@costlydeveloper/ngx-awesome-popup";
-import {LoginComponent} from './public/login/login.component';
-import {AuthInterceptor} from "./interceptor/auth.interceptor";
-//import { EditFormationComponent } from './views/formations/edit-formation/edit-formation.component';
-//import { ThemesComponent } from './views/themes/themes.component';
-//import { ContentDashboardComponent } from './views/content-dashboard/content-dashboard.component';
-//import { DashboardComponent } from './views/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    //FormationsComponent,
-    FormateursComponent,
     ClientsComponent,
-    SessionsComponent,
-    //ThemesInfosComponent,
     InsertClientComponent,
-    InsertFormateurComponent,
-    SessionComponent,
     LoginComponent,
-    //EditFormationComponent,
-    //ThemesComponent,
-    //ContentDashboardComponent,
-    //DashboardComponent
   ],
   imports: [
     BrowserModule,

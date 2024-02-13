@@ -1,5 +1,4 @@
 import { Theme } from "./Theme";
-import { Training } from "./Training";
 
 export interface SubTheme {
     id: number;
@@ -7,6 +6,5 @@ export interface SubTheme {
     description: string;
     creationDate: Date;
     updateDate: Date;
-    trainings: Training[];
     themes: Theme[];
 }

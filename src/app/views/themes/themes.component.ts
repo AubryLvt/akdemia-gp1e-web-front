@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { tap } from 'rxjs';
 import { Theme } from 'src/app/models/Theme';
 import { ThemeService } from 'src/app/services/theme.service';
@@ -10,6 +10,7 @@ import { UtilsService } from "../../services/utils.service";
 import { ConfirmBoxEvokeService } from "@costlydeveloper/ngx-awesome-popup";
 import { ToastrService } from "ngx-toastr";
 import { AlertService } from 'src/app/services/alert.service';
+
 
 @Component({
   selector: 'app-themes',
