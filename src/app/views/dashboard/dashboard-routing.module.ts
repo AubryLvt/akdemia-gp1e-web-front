@@ -8,6 +8,8 @@ import { ThemesComponent } from "../themes/themes.component";
 import { DashboardComponent } from "./dashboard.component";
 import { TrainersComponent } from "../trainers/trainers.component";
 import { InsertTrainerComponent } from "../trainers/insert-trainer/insert-trainer.component";
+import { TrainingsComponent } from "../trainings/trainings.component";
+import { InsertTrainingComponent } from "../trainings/insert-training/insert-training.component";
 
 
 const routes: Routes = [
@@ -24,7 +26,9 @@ const routes: Routes = [
       {path: 'clients/particulier/:id', component: InsertClientComponent},
       {path: 'clients/company/:id', component: InsertClientComponent},
       {path: 'trainers', component: TrainersComponent},
-      {path: 'InsertTrainerComponent/:id', component: InsertTrainerComponent}
+      {path: 'trainings', component: TrainingsComponent},
+      {path: 'InsertTrainerComponent/:id', component: InsertTrainerComponent},
+      {path: 'InsertTrainingComponent/:id', component: InsertTrainingComponent}
     ]
   },
 ];

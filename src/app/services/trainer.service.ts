@@ -1,10 +1,9 @@
 // trainers.service.ts
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Trainer } from '../models/Trainer';
-import { URL_BASE } from '../conf/constant';
-import { CrudService } from './crud.service';
+import { Injectable }   from '@angular/core';
+import { HttpClient }   from '@angular/common/http';
+import { Trainer }      from '../models/Trainer';
+import { URL_BASE }     from '../conf/constant';
+import { CrudService }  from './crud.service';
 
 @Injectable({
   providedIn: 'root'
