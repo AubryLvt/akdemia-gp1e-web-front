@@ -6,6 +6,8 @@ import { ContentDashboardComponent } from "../content-dashboard/content-dashboar
 import { ThemesInfosComponent } from "../themes/themes-infos/themes-infos.component";
 import { ThemesComponent } from "../themes/themes.component";
 import { DashboardComponent } from "./dashboard.component";
+import { TrainersComponent } from "../trainers/trainers.component";
+import { InsertTrainerComponent } from "../trainers/insert-trainer/insert-trainer.component";
 
 
 const routes: Routes = [
@@ -20,7 +22,9 @@ const routes: Routes = [
       {path: 'clients/:id', component: InsertClientComponent},
       {path: 'clients/employe/:id', component: InsertClientComponent},
       {path: 'clients/particulier/:id', component: InsertClientComponent},
-      {path: 'clients/company/:id', component: InsertClientComponent}
+      {path: 'clients/company/:id', component: InsertClientComponent},
+      {path: 'trainers', component: TrainersComponent},
+      {path: 'InsertTrainerComponent/:id', component: InsertTrainerComponent}
     ]
   },
 ];

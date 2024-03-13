@@ -1,8 +1,9 @@
-<div
-  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
->
+<!-- En-tête de la page -->
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h1 class="h2">Participants</h1>
 </div>
+
+<!-- Contenu principal de la page -->
 <div class="col-lg-12">
   <div class="row tab-content">
     <div
@@ -19,6 +20,7 @@
             >
           </div>
           <p class="my-3">
+            <!-- Liens de filtre -->
             <a
               (click)="showParticular()"
               class="link-offset-2 mx-5 link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
@@ -39,8 +41,10 @@
             </a>
           </p>
         </div>
+        <!-- Corps de la carte -->
         <div class="card-body">
           <div class="row mb-3">
+            <!-- Formulaire de filtre -->
             <div class="col-md-3 d-flex">
               <form style="width: 100%" [formGroup]="filterForm">
                 <div class="d-flex align-items-baseline">
@@ -59,10 +63,11 @@
               </form>
             </div>
             <div class="col-md-5">&nbsp;</div>
+            <!-- Champ de recherche -->
             <div class="col-md-4">
               <div [ngClass]="searchVisibility?'search active mb-3':'search mb-3'" >
                 <form [formGroup]="searchForm">
-                <input [ngClass]="searchVisibility?'input':'hidden'" (input)="searchByName()" type="search" placeholder="Intitulé..." formControlName="keyWord">
+                <input [ngClass]="searchVisibility?'input':'hidden'" (input)="searchBy()" type="search" placeholder="Intitulé..." formControlName="keyWord">
                 </form>
                 <button (click)="changeSearchVisibility()" class="search-btn">
                   <i class="fa fa-search text-light"></i>
@@ -70,8 +75,10 @@
             </div>
           </div>
           </div>
+
+          <!-- Tableau de liste des participants -->
           <div class="table-responsive">
-            <!-- particulier -->
+            <!-- Particuliers -->
             <table *ngIf="showPart" class="table">
               <thead>
                 <tr>
@@ -84,6 +91,7 @@
                 </tr>
               </thead>
               <tbody>
+                <!-- Lignes de données pour les particuliers -->
                 <tr
                   *ngFor="let firstparticular of particulars | paginate: {
                   itemsPerPage: filterForm.value.filter,
@@ -98,6 +106,7 @@
                     {{ firstparticular.creationDate | date : "dd-MM-yyyy" }}
                   </td>
                   <td>
+                    <!-- Actions pour les particuliers -->
                     <span
                       class="text-success"
                       (click)="goToEditPart(firstparticular.id)"
@@ -114,7 +123,7 @@
                 </tr>
               </tbody>
             </table>
-            <!-- employé -->
+            <!-- Employés -->
             <table *ngIf="showEmp" class="table">
               <thead>
                 <tr>
@@ -127,6 +136,7 @@
                 </tr>
               </thead>
               <tbody>
+                <!-- Lignes de données pour les employés -->
                 <tr
                   *ngFor="let empl of employees | paginate: {
                   itemsPerPage: filterForm.value.filter,
@@ -139,6 +149,7 @@
                   <td>{{ empl.gender }}</td>
                   <td>{{ empl.creationDate | date : "dd-MM-yyyy" }}</td>
                   <td>
+                    <!-- Actions pour les employés -->
                     <span
                       class="text-success"
                       (click)="goToEditClt(empl.id)"
@@ -155,7 +166,7 @@
                 </tr>
               </tbody>
             </table>
-            <!-- compagny -->
+            <!-- Entreprises -->
             <table *ngIf="showCmp" class="table">
               <thead>
                 <tr>
@@ -166,6 +177,7 @@
                 </tr>
               </thead>
               <tbody>
+                <!-- Lignes de données pour les entreprises -->
                 <tr
                   *ngFor="let firstcompany of companies | paginate: {
                   itemsPerPage: filterForm.value.filter,
@@ -176,6 +188,7 @@
                   <td>{{ firstcompany.activity }}</td>
                   <td>{{ firstcompany.creationDate | date : "dd-MM-yyyy" }}</td>
                   <td>
+                    <!-- Actions pour les entreprises -->
                     <span
                       class="text-success"
                       (click)="goToEditCpy(firstcompany.id)"
@@ -193,6 +206,8 @@
               </tbody>
             </table>
           </div>
+          
+          <!-- Informations de pagination -->
           <div class="row mt-3">
             <div class="col-md-6">
               <p class="m-0">
@@ -208,6 +223,7 @@
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-4 text-end">
+              <!-- Contrôles de pagination -->
               <pagination-controls
                 (pageChange)="handlePageChange($event)"
                 (pageBoundsCorrection)="handlePageChange($event)"

@@ -27,22 +27,21 @@ export class ClientsComponent implements OnInit {
   showPart: boolean = true;
   searchVisibility!: boolean;
 
+  //for search
+  particularReserved  : Particular[] = [];
+  employeeReserved    : Employee[] = [];
+  companyReserved     : Company[] = [];
 
+  particularSearch  : Particular[] = [];
+  companySearch     : Particular[] = [];
+  employeeSearch    : Employee[] = [];
 
-    //for search
-    particularReserved: Particular[] = [];
-    employeeReserved: Employee[] = [];
-    companyReserved: Company[] = [];
-
-    particularSearch: Particular[] = [];
-    companySearch: Particular[] = [];
-    employeeSearch: Employee[] = [];
-
-    //for filter
-    filterForm!: FormGroup;
-    searchForm!: FormGroup;
-    //for pagination
-    page: number = 1;
+  //for filter
+  filterForm!: FormGroup;
+  searchForm!: FormGroup;
+  
+  //for pagination
+  page: number = 1;
 
   constructor(
     private router: Router,
@@ -78,56 +77,33 @@ export class ClientsComponent implements OnInit {
     this.page = event;
   }
 
-  searchByName() {
-
-    if(this.showPart){
-      this.particulars = this.particularReserved;
-      let table: Particular[] = [];
-      for (let i = 0; i < this.particulars.length; i++) {
-        if (this.particulars[i].email.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())
-        || this.particulars[i].firstname.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())) {
-          table.push(this.particulars[i]);
-        }
-      }
-      if (this.searchForm.value.keyWord.trim() == "") {
-        this.particulars = this.particularReserved;
-      } else {
-        this.particulars = table;
-      }
+  searchBy() {
+    const keyword = this.searchForm.value.keyWord.toLowerCase().trim();
+    if (keyword === "") {
+      return;
     }
-    //for employee
-    else if(this.showEmp){
-      this.employees = this.employeeReserved;
-      let table: Employee[] = [];
-      for (let i = 0; i < this.employees.length; i++) {
-        if (this.employees[i].email.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())
-        || this.employees[i].firstname.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())) {
-          table.push(this.employees[i]);
-        }
-      }
-      if (this.searchForm.value.keyWord.trim() == "") {
-        this.employees = this.employeeReserved;
-      } else {
-        this.employees = table;
-      }
-    }
-    //for company
-    else if(this.showCmp){
-      this.companies = this.companyReserved;
-      let table: Company[] = [];
-      for (let i = 0; i < this.companies.length; i++) {
-        if (this.companies[i].email.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())
-        || this.companies[i].name.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())) {
-          table.push(this.companies[i]);
-        }
-      }
-      if (this.searchForm.value.keyWord.trim() == "") {
-        this.companies = this.companyReserved;
-      } else {
-        this.companies = table;
-      }
+    
+    if (this.showPart) {
+      this.particulars = this.particularReserved.filter(client =>
+        Object.values(client).some(value =>
+          typeof value === "string" && value.toLowerCase().includes(keyword)
+        )
+      );
+    } else if (this.showEmp) {
+      this.employees = this.employeeReserved.filter(client =>
+        Object.values(client).some(value =>
+          typeof value === "string" && value.toLowerCase().includes(keyword)
+        )
+      );
+    } else if (this.showCmp) {
+      this.companies = this.companyReserved.filter(client =>
+        Object.values(client).some(value =>
+          typeof value === "string" && value.toLowerCase().includes(keyword)
+        )
+      );
     }
   }
+  
 
   getAllCompanies() {
     this.companyService.getAll().subscribe(

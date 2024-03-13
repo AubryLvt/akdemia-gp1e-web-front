@@ -13,9 +13,9 @@ import { AlertService } from 'src/app/services/alert.service';
 
 
 @Component({
-  selector: 'app-themes',
-  templateUrl: './themes.component.html',
-  styleUrls: ['./themes.component.scss'],
+  selector    : 'app-themes',
+  templateUrl : './themes.component.html',
+  styleUrls   : ['./themes.component.scss'],
   animations: [
     trigger('flyInOut', [
       state('in', style({ transform: 'translateX(0)' })),
@@ -35,34 +35,37 @@ export class ThemesComponent implements OnInit {
     return Math.ceil(arg0);
   }
 
-  themeForm!: FormGroup;
-  themeValue!: Theme;
-  modalRef!: NgbModalRef;
-  searchVisibility!: boolean;
+  themeForm         !: FormGroup;
+  themeValue        !: Theme;
+  modalRef          !: NgbModalRef;
+  searchVisibility  !: boolean;
+
   //for search
-  themesAll: Theme[] = [];
-  themesAllReserved: Theme[] = [];
-  themesSearch: Theme[] = [];
+  themesAll         : Theme[] = [];
+  themesAllReserved : Theme[] = [];
+  themesSearch      : Theme[] = [];
+
   //for filter
   filterForm!: FormGroup;
   searchForm!: FormGroup;
+  
   //for pagination
-  page: number = 1;
-  position: number = 1;
+  page      : number = 1;
+  position  : number = 1;
 
-  themeUpdateForm!: FormGroup;
-  isLoading!: boolean;
-  isFormThemeLoading!: boolean;
+  themeUpdateForm     !: FormGroup;
+  isLoading           !: boolean;
+  isFormThemeLoading  !: boolean;
 
 
   constructor(
-    private themeService: ThemeService,
-    private toastService: ToastrService,
-    private utilsService: UtilsService,
-    private alert: AlertService,
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private alertService: ConfirmBoxEvokeService
+    private themeService  : ThemeService,
+    private toastService  : ToastrService,
+    private utilsService  : UtilsService,
+    private alert         : AlertService,
+    private formBuilder   : FormBuilder,
+    private router        : Router,
+    private alertService  : ConfirmBoxEvokeService
   ) { }
 
   ngOnInit(): void {
@@ -73,7 +76,6 @@ export class ThemesComponent implements OnInit {
 
   selectPage(page: string) {
     this.page = parseInt(page, 10) || 1;
-
   }
 
   innitForm() {
@@ -91,28 +93,27 @@ export class ThemesComponent implements OnInit {
     });
 
     this.themeUpdateForm = this.formBuilder.group({
-      id: ['', Validators.required],
-      themeTitle: ['', Validators.required],
-      description: ['', Validators.required],
+      id          : ['', Validators.required],
+      themeTitle  : ['', Validators.required],
+      description : ['', Validators.required],
       creationDate: ['', Validators.required],
-      subThemes: [[]]
+      subThemes   : [[]]
     });
   }
 
-  searchByName() {
+  searchBy() {
     this.themesAll = this.themesAllReserved;
-    let table: Theme[] = [];
-    for (let i = 0; i < this.themesAll.length; i++) {
-      if (this.themesAll[i].themeTitle.toLowerCase().includes(this.searchForm.value.keyWord.toLowerCase())) {
-        table.push(this.themesAll[i]);
-      }
+    const keyword = this.searchForm.value.keyWord.toLowerCase().trim();
+    if (keyword === "") {
+      return;
     }
-    if (this.searchForm.value.keyWord.trim() == "") {
-      this.themesAll = this.themesAllReserved;
-    } else {
-      this.themesAll = table;
-    }
+    this.themesAll = this.themesAll.filter((theme: Theme) =>
+      Object.values(theme).some((value: any) =>
+        typeof value === "string" && value.toLowerCase().includes(keyword)
+      )
+    );
   }
+  
   
   changeSearchVisibility() {
     this.searchVisibility = !this.searchVisibility;
@@ -164,10 +165,10 @@ export class ThemesComponent implements OnInit {
   }
 
   createTheme(): Theme {
-    this.themeValue = this.themeForm.value;
-    this.themeValue.themeTitle = this.themeForm.value.themeTitle;
-    this.themeValue.description = this.themeForm.value.description;
-    this.themeValue.creationDate = new Date();
+    this.themeValue               = this.themeForm.value;
+    this.themeValue.themeTitle    = this.themeForm.value.themeTitle;
+    this.themeValue.description   = this.themeForm.value.description;
+    this.themeValue.creationDate  = new Date();
     return this.themeValue;
   }
 
