@@ -10,9 +10,9 @@ import { ParticularService } from 'src/app/services/particular.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-insert-client',
-  templateUrl: './insert-client.component.html',
-  styleUrls: ['./insert-client.component.scss']
+  selector    : 'app-insert-client',
+  templateUrl : './insert-client.component.html',
+  styleUrls   : ['./insert-client.component.scss']
 })
 export class InsertClientComponent implements OnInit{
 
@@ -111,20 +111,20 @@ export class InsertClientComponent implements OnInit{
   initForm() {
       // Sélectionnez la première entreprise du tableau 'companies' comme entreprise par défaut
       this.userForm = new FormGroup({
-        id: new FormControl(),
-        company: new FormControl(),
-        firstname: new FormControl(''),
-        email: new FormControl('', [Validators.required, Validators.email]),
-        lastname: new FormControl(''),
-        name: new FormControl(''),
-        phone: new FormControl(''),
-        activity: new FormControl(''),
-        gender: new FormControl('M'),
+        id            : new FormControl(),
+        company       : new FormControl(),
+        firstname     : new FormControl(''),
+        email         : new FormControl('', [Validators.required, Validators.email]),
+        lastname      : new FormControl(''),
+        name          : new FormControl(''),
+        phone         : new FormControl(''),
+        activity      : new FormControl(''),
+        gender        : new FormControl('M'),
         highestDiploma: new FormControl(''),
-        address: new FormControl(''),
-        birthDate: new FormControl(''),
-        creationDate: new FormControl(),
-        updateDate: new FormControl(),
+        address       : new FormControl(''),
+        birthDate     : new FormControl(''),
+        creationDate  : new FormControl(),
+        updateDate    : new FormControl(),
       });
   }
 

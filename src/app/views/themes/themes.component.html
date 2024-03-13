@@ -112,7 +112,7 @@
           <div class="col-md-4">
             <div [ngClass]="searchVisibility?'search active mb-3':'search mb-3'" >
               <form [formGroup]="searchForm">
-              <input [ngClass]="searchVisibility?'input':'hidden'" (input)="searchByName()" type="search" placeholder="Intitulé..." formControlName="keyWord">
+              <input [ngClass]="searchVisibility?'input':'hidden'" (input)="searchBy()" type="search" placeholder="Intitulé..." formControlName="keyWord">
               </form>
               <button (click)="changeSearchVisibility()" class="search-btn">
                 <i class="fa fa-search text-light"></i>

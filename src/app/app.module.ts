@@ -12,8 +12,10 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AuthInterceptor } from "./interceptor/auth.interceptor";
 import { LoginComponent } from "./public/login/login.component";
-import { ClientsComponent } from "./views/clients/clients.component";
-import { InsertClientComponent } from "./views/clients/insert-client/insert-client.component";
+
+import { ClientsComponent }       from "./views/clients/clients.component";
+import { InsertClientComponent }  from "./views/clients/insert-client/insert-client.component";
+import { InsertTrainerComponent } from './views/trainers/insert-trainer/insert-trainer.component';
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import { InsertClientComponent } from "./views/clients/insert-client/insert-clie
     ClientsComponent,
     InsertClientComponent,
     LoginComponent,
+    InsertTrainerComponent,
   ],
   imports: [
     BrowserModule,
