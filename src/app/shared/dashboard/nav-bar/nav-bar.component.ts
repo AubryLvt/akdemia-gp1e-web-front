@@ -13,7 +13,7 @@ export class NavBarComponent implements OnInit {
   // Liens vers différentes sections du tableau de bord
   dashboardLink   : string = "/dashboard";                        // Lien vers le tableau de bord
   themesLink      : string = "/dashboard/catalogues/themes";      // Lien vers la section des thèmes
-  formationsLink  : string = "/dashboard/catalogues/formations";  // Lien vers la section des formations
+  formationsLink  : string = "/dashboard/trainings";              // Lien vers la section des formations
   formateursLink  : string = "/dashboard/trainers";               // Lien vers la section des formateurs
   clientsLink     : string = "/dashboard/clients";                // Lien vers la section des clients
   sessionsLink    : string = "/dashboard/sessions";               // Lien vers la section des sessions

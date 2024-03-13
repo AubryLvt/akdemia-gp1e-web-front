@@ -16,6 +16,7 @@ import { LoginComponent } from "./public/login/login.component";
 import { ClientsComponent }       from "./views/clients/clients.component";
 import { InsertClientComponent }  from "./views/clients/insert-client/insert-client.component";
 import { InsertTrainerComponent } from './views/trainers/insert-trainer/insert-trainer.component';
+import { InsertTrainingComponent } from './views/trainings/insert-training/insert-training.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { InsertTrainerComponent } from './views/trainers/insert-trainer/insert-t
     InsertClientComponent,
     LoginComponent,
     InsertTrainerComponent,
+    InsertTrainingComponent,
   ],
   imports: [
     BrowserModule,

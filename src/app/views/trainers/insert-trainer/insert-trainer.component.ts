@@ -8,9 +8,9 @@ import { TrainerService } from 'src/app/services/trainer.service'; // Importatio
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-insert-trainer',
-  templateUrl: './insert-trainer.component.html',
-  styleUrls: ['./insert-trainer.component.scss']
+  selector    : 'app-insert-trainer',
+  templateUrl : './insert-trainer.component.html',
+  styleUrls   : ['./insert-trainer.component.scss']
 })
 export class InsertTrainerComponent implements OnInit {
 

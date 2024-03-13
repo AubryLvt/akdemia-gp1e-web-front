@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { ConfirmBoxEvokeService } from '@costlydeveloper/ngx-awesome-popup';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
-import { Trainer } from 'src/app/models/Trainer';
 import { AlertService } from 'src/app/services/alert.service';
-import { TrainerService } from 'src/app/services/trainer.service';
 import { UtilsService } from 'src/app/services/utils.service';
 import { tap } from 'rxjs';
+import { TrainerService } from 'src/app/services/trainer.service';
+import { Trainer } from 'src/app/models/Trainer';
 
 @Component({
   selector    : 'app-trainers',

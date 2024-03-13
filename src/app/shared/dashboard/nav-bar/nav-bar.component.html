@@ -22,6 +22,28 @@
                 
                 >Accueil</a>
             </li>
+            
+            <!-- Élément de menu: Formateurs -->
+            <li class="nav-item">
+              <a
+                [routerLink]="formateursLink"
+                class="nav-link text-white"
+                [routerLinkActive]="'active-menu'"
+              >
+                Formateurs
+              </a>
+            </li>
+
+            <!-- Élément de menu: Formations -->
+            <li class="nav-item">
+              <a
+                [routerLink]="formationsLink"
+                class="nav-link text-white"
+                [routerLinkActive]="'active-menu'"
+              >
+                Formations
+              </a>
+            </li>
 
             <!-- Élément de menu: Themes -->
             <li class="nav-item">
@@ -44,16 +66,6 @@
               </a>
             </li>
 
-            <!-- Élément de menu: Formateurs -->
-            <li class="nav-item">
-              <a
-                [routerLink]="formateursLink"
-                class="nav-link text-white"
-                [routerLinkActive]="'active-menu'"
-              >
-                Formateurs
-              </a>
-            </li>
 
             <!-- Élément de menu: Déconnexion -->
             <li class="nav-item">
