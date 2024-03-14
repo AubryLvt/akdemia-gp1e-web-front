@@ -15,6 +15,7 @@ import { ContentDashboardComponent }  from '../content-dashboard/content-dashboa
 import { ThemesComponent }            from '../themes/themes.component';
 import { TrainersComponent }          from '../trainers/trainers.component';
 import { TrainingsComponent }         from '../trainings/trainings.component';
+import { SessionsComponent }          from '../sessions/sessions.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TrainingsComponent }         from '../trainings/trainings.component';
     ThemesComponent,
     ThemesInfosComponent,
     TrainersComponent,
-    TrainingsComponent
+    TrainingsComponent,
+    SessionsComponent,
   ],
   imports: [
     CommonModule,

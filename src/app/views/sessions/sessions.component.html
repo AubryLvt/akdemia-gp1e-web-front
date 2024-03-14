@@ -1,0 +1,183 @@
+<h1 class="h2 mt-3">Sessions</h1>
+<hr class="lead mt-0" />
+<div class="row tab-content">
+  <div
+    id="list-view"
+    class="tab-pane fade active show col-lg-12"
+    role="tabpanel"
+  >
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <h4 class="lead">
+          {{
+            sessionAllReserved.length > 0 || sessionAll.length > 0
+              ? "Liste des Sessions"
+              : "Vous n'avez aucune session pour l'instant"
+          }}
+        </h4>
+
+        <!-- Bouton pour ouvrir le modal d'ajout de sessions -->
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#sessionModal"
+        >
+          Ajouter une session
+        </button>
+      </div>
+
+      <!-- Modal pour ajouter un session -->
+      <div
+        class="modal fade"
+        id="sessionModal"
+        data-bs-backdrop="static"
+        tabindex="-1"
+        aria-labelledby="sessionModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Ajouter une session</h5>
+            </div>
+
+            <form [formGroup]="sessionForm">
+              <button
+                type="reset"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                &nbsp;Annuler
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tableau d'affichage des sessions -->
+      <div
+        class="card-body"
+        *ngIf="sessionAllReserved.length > 0 || sessionAll.length > 0"
+      >
+        <!-- Barre de recherche et filtre -->
+        <div class="row mb-3 justify-content-between">
+          <div class="col-md-3">
+            <form style="width: 100%" [formGroup]="filterForm">
+              <div class="d-flex align-items-baseline">
+                <label for="entries" class="form-label me-2">Nombre</label>
+                <select
+                  formControlName="filter"
+                  class="form-select-sm"
+                  id="entries"
+                >
+                  <option value="5">5</option>
+                  <option value="20">20</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-4">
+            <div
+              [ngClass]="
+                searchVisibility ? 'search active mb-3' : 'search mb-3'
+              "
+            >
+              <form [formGroup]="searchForm">
+                <input
+                  [ngClass]="searchVisibility ? 'input' : 'hidden'"
+                  (input)="searchBy()"
+                  type="search"
+                  placeholder="Intitulé/Description/etc..."
+                  formControlName="keyWord"
+                  style="width: 100%"
+                />
+              </form>
+              <button (click)="changeSearchVisibility()" class="search-btn">
+                <i class="fa fa-search text-light"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tableau des sessions -->
+        <div class="table table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" class="head-title">Code</th>
+                <th scope="col" class="head-title">Description</th>
+                <!-- TODO : min participant-->
+                <th scope="col" class="head-title">Statut</th>
+                <th scope="col" class="head-title">Durée (Jours)</th>
+                <th scope="col" class="head-title">Date</th>
+                <th scope="col" class="head-title">Lieu</th>
+                <th scope="col" class="text-center head-title">Actions</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <!-- Lignes du tableau -->
+              <tr
+                *ngFor="
+                  let session of sessionAll
+                    | paginate
+                      : {
+                          itemsPerPage: filterForm.value.filter,
+                          currentPage: page
+                        }
+                "
+              >
+                <!-- Affichage des attributs de chaque session -->
+                <!-- Boucle sur la liste des sessions et affichage -->
+              </tr>
+
+              <tr *ngFor="let session of sessionAll">
+                <td>{{ session.code }}</td>
+                <td>{{ session.description }}</td>
+                <td>{{ session.status }}</td>
+                <td>{{ session.duration }}</td>
+                <td>{{ session.date | date }}</td>
+                <td>{{ session.location }}</td>
+                <td class="text-center">
+                  <!-- Ajoutez ici les boutons pour les actions sur la session -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <!-- Nombre d'entrées affichées -->
+            <p class="m-0">
+              Affichage de {{ filterForm.value.filter }} entrées sur
+              {{ sessionAll.length }}
+            </p>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="col-md-4 text-end">
+            <!-- Contrôles de pagination -->
+            <pagination-controls
+              (pageChange)="handlePageChange($event)"
+              (pageBoundsCorrection)="handlePageChange($event)"
+              previousLabel="Précédent"
+              nextLabel="Suivant"
+              screenReaderPaginationLabel="Pagination"
+              screenReaderPageLabel="page"
+              screenReaderCurrentLabel="Vous êtes à la page"
+            ></pagination-controls>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chargement en cours -->
+      <div class="container-fluid waiting" *ngIf="isLoading">
+        <span class="spinner-border"></span>
+      </div>
+    </div>
+  </div>
+</div>
