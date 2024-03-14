@@ -18,7 +18,6 @@ import { InsertClientComponent }  from "./views/clients/insert-client/insert-cli
 import { InsertTrainerComponent } from './views/trainers/insert-trainer/insert-trainer.component';
 import { InsertTrainingComponent } from './views/trainings/insert-training/insert-training.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

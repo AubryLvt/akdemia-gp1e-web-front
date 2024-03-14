@@ -10,6 +10,7 @@ import { TrainersComponent } from "../trainers/trainers.component";
 import { InsertTrainerComponent } from "../trainers/insert-trainer/insert-trainer.component";
 import { TrainingsComponent } from "../trainings/trainings.component";
 import { InsertTrainingComponent } from "../trainings/insert-training/insert-training.component";
+import { SessionsComponent } from "../sessions/sessions.component";
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
       {path: 'clients/company/:id', component: InsertClientComponent},
       {path: 'trainers', component: TrainersComponent},
       {path: 'trainings', component: TrainingsComponent},
+      {path: 'sessions', component: SessionsComponent},
       {path: 'InsertTrainerComponent/:id', component: InsertTrainerComponent},
       {path: 'InsertTrainingComponent/:id', component: InsertTrainingComponent}
     ]
