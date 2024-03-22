@@ -11,6 +11,10 @@ import { ConfirmBoxEvokeService } from "@costlydeveloper/ngx-awesome-popup";
 import { ToastrService } from "ngx-toastr";
 import { AlertService } from 'src/app/services/alert.service';
 
+// Ce fichier est un composant Angular responsable de la gestion des thèmes, 
+// y compris l'affichage, l'ajout, la modification et la suppression, 
+// ainsi que la recherche et le filtrage.
+
 
 @Component({
   selector    : 'app-themes',
@@ -29,12 +33,13 @@ import { AlertService } from 'src/app/services/alert.service';
     ])
   ],
 })
+
 export class ThemesComponent implements OnInit {
 
   convert(arg0: number) {
     return Math.ceil(arg0);
   }
-
+  // --------- Initialisation des variables ---------
   themeForm         !: FormGroup;
   themeValue        !: Theme;
   modalRef          !: NgbModalRef;
@@ -57,7 +62,7 @@ export class ThemesComponent implements OnInit {
   isLoading           !: boolean;
   isFormThemeLoading  !: boolean;
 
-
+  // --------- Constructeur du composant ---------
   constructor(
     private themeService  : ThemeService,
     private toastService  : ToastrService,
@@ -68,30 +73,38 @@ export class ThemesComponent implements OnInit {
     private alertService  : ConfirmBoxEvokeService
   ) { }
 
+  // Méthode appelée à l'initialisation du composant
   ngOnInit(): void {
     this.innitForm();
     this.getAllThemes();
     this.searchVisibility = false;
   }
 
+  // Méthode pour sélectionner une page
   selectPage(page: string) {
     this.page = parseInt(page, 10) || 1;
   }
 
+  // Initialisation des formulaires
   innitForm() {
+
+    // Formulaire d'ajout de thème
     this.themeForm = new FormGroup({
       themeTitle: new FormControl(''),
       description: new FormControl(''),
     });
 
+    // Formulaire de recherche
     this.searchForm = new FormGroup({
       keyWord: new FormControl('')
     });
 
+    // Formulaire de filtre
     this.filterForm = new FormGroup({
       filter: new FormControl(20)
     });
 
+    // Formulaire de mise à jour de thème
     this.themeUpdateForm = this.formBuilder.group({
       id          : ['', Validators.required],
       themeTitle  : ['', Validators.required],
@@ -101,6 +114,7 @@ export class ThemesComponent implements OnInit {
     });
   }
 
+  // Méthode de recherche par mot-clé
   searchBy() {
     this.themesAll = this.themesAllReserved;
     const keyword = this.searchForm.value.keyWord.toLowerCase().trim();
@@ -114,11 +128,12 @@ export class ThemesComponent implements OnInit {
     );
   }
   
-  
+  // Méthode pour changer la visibilité de la barre de recherche
   changeSearchVisibility() {
     this.searchVisibility = !this.searchVisibility;
   }
 
+  // Méthode pour gérer le changement de page
   handlePageChange(event: number) {
     this.page = event;
   }
@@ -234,7 +249,8 @@ export class ThemesComponent implements OnInit {
       )
     ).subscribe();
   }
-
+  
+  // Méthode pour afficher les détails d'un thème
   themeDetail(id: number) {
     this.router.navigate([`dashboard/catalogues/themes/infos/${id}`]);
   }

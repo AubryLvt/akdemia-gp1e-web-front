@@ -6,5 +6,6 @@ export interface Theme {
     description     : string;
     creationDate    : Date;
     updateDate      : Date;
+    // Liste des sous-thèmes associés à ce thème, de type tableau d'objets SubTheme
     subThemes       : SubTheme[];
 }
