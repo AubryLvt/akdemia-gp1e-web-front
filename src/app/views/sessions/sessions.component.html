@@ -1,3 +1,5 @@
+<!-- Le composant affiche la liste des sessions -->
+
 <h1 class="h2 mt-3">Sessions</h1>
 <hr class="lead mt-0" />
 <div class="row tab-content">
@@ -27,7 +29,7 @@
         </button>
       </div>
 
-      <!-- Modal pour ajouter un session -->
+      <!-- Modal pour ajouter une session -->
       <div
         class="modal fade"
         id="sessionModal"
@@ -38,18 +40,100 @@
       >
         <div class="modal-dialog" role="document">
           <div class="modal-content">
+            <!-- TITRE DU MODAL -->
             <div class="modal-header">
               <h5 class="modal-title">Ajouter une session</h5>
             </div>
 
+            <!-- MODAL -->
             <form [formGroup]="sessionForm">
-              <button
-                type="reset"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                &nbsp;Annuler
-              </button>
+              <!-- BODY -->
+              <div class="modal-body">
+                <!-- DESCRIPTION -->
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    class="form-control input-default"
+                    placeholder="Description *"
+                    formControlName="description"
+                    required
+                  />
+                </div>
+                <!-- STATUS -->
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    class="form-control input-default"
+                    placeholder="Status *"
+                    formControlName="status"
+                    required
+                  />
+                </div>
+                <!-- DURATION -->
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    class="form-control input-default"
+                    placeholder="Duration *"
+                    formControlName="duration"
+                    required
+                  />
+                </div>
+                <!-- DATE -->
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    class="form-control input-default"
+                    placeholder="Date *"
+                    formControlName="date"
+                    required
+                  />
+                </div>
+                <!-- LOCATION -->
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    class="form-control input-default"
+                    placeholder="Téléphone"
+                    formControlName="phone"
+                  />
+                </div>
+                <!-- PRICE -->
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    class="form-control input-default"
+                    placeholder="Price"
+                    formControlName="price"
+                  />
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <!-- BOUTON ENREGISTRER DU MODAL -->
+                <button
+                  type="submit"
+                  [disabled]="sessionForm.invalid || isFormSessionLoading"
+                  class="btn btn-primary"
+                  (click)="saveSession()"
+                >
+                  <span
+                    *ngIf="isFormSessionLoading"
+                    class="spinner-border"
+                  ></span
+                  ><span [ngClass]="isFormSessionLoading ? 'hidden' : ''"
+                    >&nbsp;Save</span
+                  >
+                </button>
+                <!-- BOUTON ANNULER DU MODAL -->
+                <button
+                  type="reset"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  &nbsp;Cancel
+                </button>
+              </div>
             </form>
           </div>
         </div>
@@ -109,7 +193,6 @@
               <tr>
                 <th scope="col" class="head-title">Code</th>
                 <th scope="col" class="head-title">Description</th>
-                <!-- TODO : min participant-->
                 <th scope="col" class="head-title">Statut</th>
                 <th scope="col" class="head-title">Durée (Jours)</th>
                 <th scope="col" class="head-title">Date</th>
@@ -130,8 +213,8 @@
                         }
                 "
               >
-                <!-- Affichage des attributs de chaque session -->
-                <!-- Boucle sur la liste des sessions et affichage -->
+                <!-- TODO : Affichage des attributs de chaque session -->
+                <!-- TODO : Boucle sur la liste des sessions et affichage -->
               </tr>
 
               <tr *ngFor="let session of sessionAll">
@@ -142,7 +225,7 @@
                 <td>{{ session.date | date }}</td>
                 <td>{{ session.location }}</td>
                 <td class="text-center">
-                  <!-- Ajoutez ici les boutons pour les actions sur la session -->
+                  <!-- TODO : Ajoutez ici les boutons pour les actions sur la session -->
                 </td>
               </tr>
             </tbody>

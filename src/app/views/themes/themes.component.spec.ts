@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ThemesComponent } from './themes.component';
 
-// Ce fichier est un fichier de test unitaire pour le composant ThemesComponent d'Angular. 
+// Ce fichier est un FICHIER DE TESTS UNITAIRES pour le composant ThemesComponent d'Angular. 
 // Il vérifie si le composant est créé avec succès.
 
 describe('ThemesComponent', () => {

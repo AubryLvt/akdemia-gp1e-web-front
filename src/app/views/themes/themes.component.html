@@ -1,7 +1,7 @@
-<!-- Le composant affiche une liste de thèmes -->
+<!-- Le composant affiche la liste des thèmes -->
 
 <!-- Entête de la page -->
-<h1 class="h2  mt-3">Thèmes</h1>
+<h1 class="h2 mt-3">Thèmes</h1>
 <hr class="lead mt-0" />
 
 <div class="row tab-content">
@@ -94,12 +94,11 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Affichage de la liste des thèmes -->
       <div
         class="card-body"
         *ngIf="themesAllReserved.length > 0 || themesAll.length > 0"
-        
       >
         <div class="row mb-3 justify-content-between">
           <div class="col-md-3">
@@ -120,20 +119,30 @@
             </form>
           </div>
           <div class="col-md-4">
-            <div [ngClass]="searchVisibility?'search active mb-3':'search mb-3'" >
+            <div
+              [ngClass]="
+                searchVisibility ? 'search active mb-3' : 'search mb-3'
+              "
+            >
               <form [formGroup]="searchForm">
-              <input [ngClass]="searchVisibility?'input':'hidden'" (input)="searchBy()" type="search" placeholder="Intitulé..." formControlName="keyWord">
+                <input
+                  [ngClass]="searchVisibility ? 'input' : 'hidden'"
+                  (input)="searchBy()"
+                  type="search"
+                  placeholder="Intitulé..."
+                  formControlName="keyWord"
+                />
               </form>
               <button (click)="changeSearchVisibility()" class="search-btn">
                 <i class="fa fa-search text-light"></i>
               </button>
-          </div>
+            </div>
           </div>
         </div>
         <div class="table table-responsive">
           <table class="table">
             <thead>
-              <tr >
+              <tr>
                 <th scope="col" class="head-title">Intitulé</th>
                 <th scope="col" class="head-title">Description</th>
                 <th scope="col" class="head-title">Date création</th>
@@ -264,9 +273,8 @@
       <div class="container-fluid waiting" *ngIf="isLoading">
         <span class="spinner-border"></span>
       </div>
-
     </div>
-    
+
     <!-- DEBUT MODIFIER un thème -->
     <div
       class="modal fade"
@@ -341,10 +349,8 @@
       </div>
     </div>
     <!-- FIN MODIFIER un thème -->
-
   </div>
   <!-- FIN list-view -->
-
 </div>
 <div class="container-fluid waiting" *ngIf="isLoading">
   <span class="spinner-border"></span>
