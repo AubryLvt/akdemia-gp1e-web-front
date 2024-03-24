@@ -130,7 +130,7 @@
                   [ngClass]="searchVisibility ? 'input' : 'hidden'"
                   (input)="searchBy()"
                   type="search"
-                  placeholder="Intitulé..."
+                  placeholder="Search"
                   formControlName="keyWord"
                 />
               </form>
@@ -188,10 +188,7 @@
         <!-- Pagination -->
         <div class="row mt-3">
           <div class="col-md-6">
-            <p class="m-0">
-              Affichage de {{ filterForm.value.filter }} entrées sur
-              {{ themesAll.length }}
-            </p>
+            <p class="m-0">{{ themesAll.length }} results</p>
           </div>
           <div class="col-md-2"></div>
           <div class="col-md-4 text-end">

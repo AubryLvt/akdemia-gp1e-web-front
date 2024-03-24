@@ -185,7 +185,7 @@
                   [ngClass]="searchVisibility ? 'input' : 'hidden'"
                   (input)="searchBy()"
                   type="search"
-                  placeholder="Nom/Prénom/etc..."
+                  placeholder="Search"
                   formControlName="keyWord"
                 />
               </form>
@@ -266,18 +266,7 @@
               entrées sur
               {{ trainerAll.length }}
             </p> -->
-            <p>{{ trainerAll.length }} résults</p>
-
-
-            <!-- pseudo code de l'affichage des pages :
-            si le nombre total d'items (ex:11) est inf ou égal au filtre (ex:20)
-            alors on affiche le nombre total d'items
-
-            si le nombre total d'items (ex:11) est sup au filtre (ex:5)
-            alors si la page courante est diff de 1
-              alors totalitems - filtre * (page -1)
-              sinon valeur du filtre
-             -->
+            <p>{{ trainerAll.length }} results</p>
           </div>
           <div class="col-md-2"></div>
           <div class="col-md-4 text-end">

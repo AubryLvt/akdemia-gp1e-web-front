@@ -9,13 +9,11 @@ import { Router } from '@angular/router';
 import { ConfirmBoxEvokeService } from '@costlydeveloper/ngx-awesome-popup';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
-import { Trainer } from 'src/app/models/Trainer';
-import { Session } from 'src/app/models/Session';
 import { AlertService } from 'src/app/services/alert.service';
-import { SessionService } from 'src/app/services/session.service';
 import { UtilsService } from 'src/app/services/utils.service';
 import { tap } from 'rxjs';
-import { provideClientHydration } from '@angular/platform-browser';
+import { SessionService } from 'src/app/services/session.service';
+import { Session } from 'src/app/models/Session';
 
 @Component({
   selector: 'app-sessions',
