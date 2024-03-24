@@ -1,7 +1,7 @@
 <!-- Le composant affiche la liste des thèmes -->
 
 <!-- Entête de la page -->
-<h1 class="h2 mt-3">Thèmes</h1>
+<h1 class="h2 mt-3">Themes</h1>
 <hr class="lead mt-0" />
 
 <div class="row tab-content">
@@ -124,6 +124,7 @@
                 searchVisibility ? 'search active mb-3' : 'search mb-3'
               "
             >
+              <!-- Formulaire de recherche -->
               <form [formGroup]="searchForm">
                 <input
                   [ngClass]="searchVisibility ? 'input' : 'hidden'"
@@ -139,6 +140,7 @@
             </div>
           </div>
         </div>
+        <!-- Tableau des themes -->
         <div class="table table-responsive">
           <table class="table">
             <thead>
@@ -182,6 +184,8 @@
             </tbody>
           </table>
         </div>
+
+        <!-- Pagination -->
         <div class="row mt-3">
           <div class="col-md-6">
             <p class="m-0">
@@ -189,7 +193,6 @@
               {{ themesAll.length }}
             </p>
           </div>
-
           <div class="col-md-2"></div>
           <div class="col-md-4 text-end">
             <pagination-controls

@@ -5,12 +5,11 @@ import { CrudService } from './crud.service';
 import { Particular } from '../models/Particular';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class ParticularService extends CrudService<Particular>{
-
+export class ParticularService extends CrudService<Particular> {
   constructor(http: HttpClient) {
     const url: string = URL_BASE;
-    super(http, `${url}/particular`);
+    super(http, `${url}/particulars`);
   }
 }
