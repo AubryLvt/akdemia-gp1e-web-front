@@ -232,17 +232,17 @@
                 <td>{{ trainer.gender }}</td>
                 <td>{{ trainer.creationDate | date : "dd/MM/yyyy" }}</td>
                 <td class="text-center" style="cursor: pointer">
-                  <!-- Actions: Modifier, Supprimer, Détail -->
+                  <!-- Actions: Edit, Delete -->
                   <i
                     class="fa fa-pencil colored"
                     (click)="goToEdit(trainer.id)"
                     data-bs-toggle="modal"
                     data-bs-target="#trainerUpdateModal"
-                    title="Modifier"
+                    title="Edit"
                   ></i>
                   <i
                     class="fa fa-trash text-danger mx-2"
-                    title="Supprimer"
+                    title="Delete"
                     (click)="trainerDelete(trainer.id)"
                   ></i>
                 </td>

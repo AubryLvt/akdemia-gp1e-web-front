@@ -225,7 +225,19 @@
                 <td>{{ session.date | date }}</td>
                 <td>{{ session.location }}</td>
                 <td class="text-center">
-                  <!-- TODO : Ajoutez ici les boutons pour les actions sur la session -->
+                  <!-- Actions: Edit, Delete, TODO : More Infos -->
+                  <i
+                    class="fa fa-pencil colored"
+                    (click)="goToEdit(session.id)"
+                    data-bs-toggle="modal"
+                    data-bs-target="#sessionUpdateModal"
+                    title="Edit"
+                  ></i>
+                  <i
+                    class="fa fa-trash text-danger mx-2"
+                    title="Delete"
+                    (click)="sessionDelete(session.id)"
+                  ></i>
                 </td>
               </tr>
             </tbody>
