@@ -254,7 +254,7 @@
         <div class="row mt-3">
           <div class="col-md-6">
             <!-- Nombre d'entrées affichées -->
-            <p>
+            <!-- <p>
               Affichage de
               {{
                 trainerAll.length <= filterForm.value.filter
@@ -265,12 +265,15 @@
               }}
               entrées sur
               {{ trainerAll.length }}
-            </p>
+            </p> -->
+            <p>{{ trainerAll.length }} résults</p>
+
+
             <!-- pseudo code de l'affichage des pages :
-            si le nombre total d'items est inf ou égal au filtre
+            si le nombre total d'items (ex:11) est inf ou égal au filtre (ex:20)
             alors on affiche le nombre total d'items
 
-            si le nombre total d'items est sup au filtre
+            si le nombre total d'items (ex:11) est sup au filtre (ex:5)
             alors si la page courante est diff de 1
               alors totalitems - filtre * (page -1)
               sinon valeur du filtre

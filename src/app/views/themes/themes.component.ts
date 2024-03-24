@@ -122,8 +122,9 @@ export class ThemesComponent implements OnInit {
       creationDate: ['', Validators.required],
       subThemes: [[]],
     });
-  }
+  } // FIN INNITFORM
 
+  
   // Méthode de recherche par mot-clé
   searchBy() {
     this.themesAll = this.themesAllReserved;

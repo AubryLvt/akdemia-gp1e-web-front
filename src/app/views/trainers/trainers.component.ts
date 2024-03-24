@@ -218,34 +218,6 @@ export class TrainersComponent implements OnInit{
     )
   }
 
-  // Edition d'un formateur
-  /*trainerEdit(id: number) {
-    this.trainerService.getById(id).subscribe((data) => {
-      this.trainerUpdateForm.patchValue({
-
-        id: data.id,
-
-        //USER
-        phone         : data.phone,
-        email         : data.email,
-        address       : data.address,
-        login         : data.login,
-        password      : data.password,
-        photo         : data.photo,
-
-        //TRAINER
-        activity      : data.activity,
-        cvLink        : data.cvLink,
-        firstName     : data.firstName,
-        lastName      : data.lastName,
-        gender        : data.gender,
-      });
-    },
-      (err) => {
-        this.alert.alertError(err.error !== null ? err.error.message : 'Impossible de modifier');
-      });
-  }*/
-
   goToEdit(id: number) {
     this.router.navigateByUrl(`dashboard/InsertTrainerComponent/${id}`);
   }

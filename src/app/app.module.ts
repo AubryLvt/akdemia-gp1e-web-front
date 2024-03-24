@@ -17,6 +17,7 @@ import { ClientsComponent }       from "./views/clients/clients.component";
 import { InsertClientComponent }  from "./views/clients/insert-client/insert-client.component";
 import { InsertTrainerComponent } from './views/trainers/insert-trainer/insert-trainer.component';
 import { InsertTrainingComponent } from './views/trainings/insert-training/insert-training.component';
+import { InsertSessionComponent } from './views/sessions/insert-session/insert-session.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { InsertTrainingComponent } from './views/trainings/insert-training/inser
     LoginComponent,
     InsertTrainerComponent,
     InsertTrainingComponent,
+    InsertSessionComponent,
   ],
   imports: [
     BrowserModule,
