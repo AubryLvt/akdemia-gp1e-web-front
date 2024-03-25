@@ -20,7 +20,7 @@ Vous êtes ici dans la partie front-end/Angular.
 
 # ----------------------------------------------------------------
 
-*# In English*
+# *In English*
 
 # Akdemia Project
 
