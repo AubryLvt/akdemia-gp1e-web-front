@@ -1,6 +1,8 @@
 <!-- En-tête de la page -->
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">Participants</h1>
+<div
+  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+>
+  <h1 class="h2">Clients</h1>
 </div>
 
 <!-- Contenu principal de la page -->
@@ -14,7 +16,7 @@
       <div class="card">
         <div class="card-header" style="background-color: #fff">
           <div class="d-flex justify-content-between">
-            <h4 class="card-title">Liste des participants</h4>
+            <h4 class="card-title">Our Clients</h4>
             <a href="dashboard/clients/insert" class="btn btn-primary"
               >Ajouter</a
             >
@@ -25,19 +27,19 @@
               (click)="showParticular()"
               class="link-offset-2 mx-5 link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
             >
-              <span [ngClass]="{ active: showPart }">Particuliers</span>
+              <span [ngClass]="{ active: showPart }">Particulars</span>
             </a>
             <a
               (click)="showEntreprise()"
               class="link-offset-2 mx-5 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
             >
-              <span [ngClass]="{ active: showCmp }">Entreprises</span>
+              <span [ngClass]="{ active: showCmp }">Companies</span>
             </a>
             <a
               (click)="showEmploye()"
               class="link-offset-2 mx-5 link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
             >
-              <span [ngClass]="{ active: showEmp }">Employeés</span>
+              <span [ngClass]="{ active: showEmp }">Employees</span>
             </a>
           </p>
         </div>
@@ -65,15 +67,25 @@
             <div class="col-md-5">&nbsp;</div>
             <!-- Champ de recherche -->
             <div class="col-md-4">
-              <div [ngClass]="searchVisibility?'search active mb-3':'search mb-3'" >
+              <div
+                [ngClass]="
+                  searchVisibility ? 'search active mb-3' : 'search mb-3'
+                "
+              >
                 <form [formGroup]="searchForm">
-                <input [ngClass]="searchVisibility?'input':'hidden'" (input)="searchBy()" type="search" placeholder="Intitulé..." formControlName="keyWord">
+                  <input
+                    [ngClass]="searchVisibility ? 'input' : 'hidden'"
+                    (input)="searchBy()"
+                    type="search"
+                    placeholder="Search"
+                    formControlName="keyWord"
+                  />
                 </form>
                 <button (click)="changeSearchVisibility()" class="search-btn">
                   <i class="fa fa-search text-light"></i>
                 </button>
+              </div>
             </div>
-          </div>
           </div>
 
           <!-- Tableau de liste des participants -->
@@ -206,12 +218,11 @@
               </tbody>
             </table>
           </div>
-          
+
           <!-- Informations de pagination -->
           <div class="row mt-3">
             <div class="col-md-6">
               <p class="m-0">
-                Affichage de {{ filterForm.value.filter }} entrées sur
                 {{
                   showPart
                     ? particulars.length
@@ -219,6 +230,7 @@
                     ? employees.length
                     : companies.length
                 }}
+                results
               </p>
             </div>
             <div class="col-md-2"></div>

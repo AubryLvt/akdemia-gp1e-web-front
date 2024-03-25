@@ -1,10 +1,13 @@
 <h1 class="h2 mt-3">Formations</h1>
 <hr class="lead mt-0" />
 <div class="row tab-content">
-  <div id="list-view" class="tab-pane fade active show col-lg-12" role="tabpanel">
+  <div
+    id="list-view"
+    class="tab-pane fade active show col-lg-12"
+    role="tabpanel"
+  >
     <div class="card">
       <div class="card-header d-flex justify-content-between">
-
         <h4 class="lead">
           {{
             trainingAllReserved.length > 0 || trainingAll.length > 0
@@ -22,7 +25,6 @@
         >
           Ajouter une formation
         </button>
-
       </div>
 
       <!-- Modal pour ajouter un formation -->
@@ -36,78 +38,76 @@
       >
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-
             <div class="modal-header">
               <h5 class="modal-title">Ajouter une formation</h5>
             </div>
 
             <form [formGroup]="trainingForm">
               <div class="modal-body">
-
                 <!-- Intitulé -->
                 <div class="mb-3">
                   <label for="title">Intitulé *</label>
                   <input
-                  type="text"
-                  id="title"
-                  class="form-control"
-                  placeholder="Généralité JEE"
-                  formControlName="title"
+                    type="text"
+                    id="title"
+                    class="form-control"
+                    placeholder="Généralité JEE"
+                    formControlName="title"
                     required
-                    />
+                  />
                 </div>
-    
+
                 <!-- Sous Thème -->
                 <!-- TODO -->
-                
-                
+
                 <!-- Prix de la formation -->
                 <div class="mb-3">
                   <label for="trainingPrice">Prix de la formation *</label>
                   <input
-                  type="number"
-                  id="trainingPrice"
-                  class="form-control"
-                  placeholder="0"
-                  formControlName="trainingPrice"
-                  required
+                    type="number"
+                    id="trainingPrice"
+                    class="form-control"
+                    placeholder="0"
+                    formControlName="trainingPrice"
+                    required
                   />
                 </div>
-                  
+
                 <!-- Champ pour le logo -->
                 <div class="d-flex">
                   <div class="mb-3 flex-fill">
-                      <div class="mb-3 flex-fill">
-                          <label for="logo" class="form-label me-2">Lien du logo *</label>
-                          <input 
-                              type="text" 
-                              class="form-control flex-grow-1" 
-                              id="logo" 
-                              formControlName="logo" 
-                              placeholder="https://"
-                              (keyup)="updateLogoPreview($event)"
-                          />
-                      </div>
+                    <div class="mb-3 flex-fill">
+                      <label for="logo" class="form-label me-2"
+                        >Lien du logo *</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control flex-grow-1"
+                        id="logo"
+                        formControlName="logo"
+                        placeholder="https://"
+                        (keyup)="updateLogoPreview($event)"
+                      />
+                    </div>
 
-                      <div class="logo-preview mb-3">
-                          <img [src]="logoPreview" alt="Logo Preview">
-                      </div>
+                    <div class="logo-preview mb-3">
+                      <img [src]="logoPreview" alt="Logo Preview" />
+                    </div>
                   </div>
                 </div>
 
                 <!-- Description -->
                 <div class="mb-3">
-                    <label for="description">Description *</label>
-                    <textarea
+                  <label for="description">Description *</label>
+                  <textarea
                     id="description"
                     class="form-control"
                     placeholder="Description"
                     rows="5"
                     formControlName="description"
                     required
-                    ></textarea>
+                  ></textarea>
                 </div>
-
               </div>
 
               <div class="modal-footer">
@@ -117,7 +117,10 @@
                   class="btn btn-primary"
                   (click)="saveTraining()"
                 >
-                  <span *ngIf="isFormTrainingLoading" class="spinner-border"></span
+                  <span
+                    *ngIf="isFormTrainingLoading"
+                    class="spinner-border"
+                  ></span
                   ><span [ngClass]="isFormTrainingLoading ? 'hidden' : ''"
                     >&nbsp;Enregistrer</span
                   >
@@ -129,7 +132,6 @@
                 >
                   &nbsp;Annuler
                 </button>
-
               </div>
             </form>
           </div>
@@ -161,15 +163,19 @@
             </form>
           </div>
           <div class="col-md-4">
-            <div [ngClass]="searchVisibility?'search active mb-3':'search mb-3'">
+            <div
+              [ngClass]="
+                searchVisibility ? 'search active mb-3' : 'search mb-3'
+              "
+            >
               <form [formGroup]="searchForm">
                 <input
-                  [ngClass]="searchVisibility?'input':'hidden'"
+                  [ngClass]="searchVisibility ? 'input' : 'hidden'"
                   (input)="searchBy()"
                   type="search"
                   placeholder="Intitulé/Description/etc..."
                   formControlName="keyWord"
-                  style="width: 100%" 
+                  style="width: 100%"
                 />
               </form>
               <button (click)="changeSearchVisibility()" class="search-btn">
@@ -196,18 +202,27 @@
             <tbody>
               <!-- Lignes du tableau -->
               <tr
-                *ngFor="let training of trainingAll | paginate: {
-                  itemsPerPage: filterForm.value.filter,
-                  currentPage: page
-                }; "
+                *ngFor="
+                  let training of trainingAll
+                    | paginate
+                      : {
+                          itemsPerPage: filterForm.value.filter,
+                          currentPage: page
+                        }
+                "
               >
                 <!-- Affichage des attributs de chaque formation -->
                 <td>
-                    <img [src]="training.logo" alt="Photo de la formation" width="50" height="50">
+                  <img
+                    [src]="training.logo"
+                    alt="Photo de la formation"
+                    width="50"
+                    height="50"
+                  />
                 </td>
                 <td>{{ training.title }}</td>
                 <td>{{ training.description }}</td>
-                <td>{{ training.creationDate | date: 'dd/MM/yyyy' }}</td>
+                <td>{{ training.creationDate | date : "dd/MM/yyyy" }}</td>
                 <td>{{ training.trainingPrice }} €</td>
                 <td class="text-center" style="cursor: pointer">
                   <!-- Actions: Modifier, Supprimer, Détail -->
@@ -233,10 +248,7 @@
         <div class="row mt-3">
           <div class="col-md-6">
             <!-- Nombre d'entrées affichées -->
-            <p class="m-0">
-              Affichage de {{ filterForm.value.filter }} entrées sur
-              {{ trainingAll.length }}
-            </p>
+            <p class="m-0">{{ trainingAll.length }} results</p>
           </div>
           <div class="col-md-2"></div>
           <div class="col-md-4 text-end">
@@ -258,7 +270,6 @@
       <div class="container-fluid waiting" *ngIf="isLoading">
         <span class="spinner-border"></span>
       </div>
-
     </div>
   </div>
 </div>

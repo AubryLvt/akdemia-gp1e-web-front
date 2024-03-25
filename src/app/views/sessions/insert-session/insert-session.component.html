@@ -1,0 +1,97 @@
+<div
+  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+>
+  <h1 class="h2">Sessions</h1>
+</div>
+
+<div class="card">
+  <div class="card-header" style="background-color: #fff">
+    <h4 class="card-title" style="margin-top: 20px">Session edit</h4>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="sessionForm" (ngSubmit)="saveOrUpdate()">
+      <!-- Champ pour la description -->
+      <div class="mb-3">
+        <label for="description" class="form-label">Description:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          formControlName="description"
+          required
+        />
+      </div>
+
+      <!-- Champ pour la durée -->
+      <div class="mb-3">
+        <label for="duration" class="form-label">Duration:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="duration"
+          formControlName="duration"
+          required
+        />
+      </div>
+
+      <!-- Champ pour la date -->
+      <div class="mb-3">
+        <label for="date" class="form-label">Date:</label>
+        <input
+          type="date"
+          class="form-control"
+          id="date"
+          formControlName="date"
+          required
+        />
+      </div>
+
+      <!-- Champ pour la localisation -->
+      <div class="mb-3">
+        <label for="location" class="form-label">Location:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="location"
+          formControlName="location"
+          required
+        />
+      </div>
+
+      <!-- Champ pour le prix -->
+      <div class="mb-3">
+        <label for="price" class="form-label">Price:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="price"
+          formControlName="price"
+        />
+      </div>
+
+      <!-- Boutons pour enregistrer ou annuler -->
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="sessionForm.invalid"
+        >
+          <span
+            *ngIf="isLoading"
+            class="spinner-border spinner-border-sm"
+            role="status"
+            aria-hidden="true"
+          ></span>
+          <span *ngIf="!isLoading">Save</span>
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary ms-md-2"
+          (click)="cancel()"
+        >
+          Session
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
