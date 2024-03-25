@@ -17,7 +17,7 @@ Le projet est divisé en trois parties :
 
 Vous êtes ici dans la partie front-end/Angular.
 
-# -----------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
 
 # English presentation
 
@@ -28,6 +28,7 @@ This project is an end-of-study project carried out by four students using a tem
 ## What is Akdemia?
 
 Akdemia is a dashboard intended for administrators of a training organization.
+
 The purpose of this dashboard is to allow them to manage trainers, trainings, training sessions, training themes, etc.
 
 ## Project structure
