@@ -5,6 +5,7 @@ Ce projet est un projet de fin d'études réalisé par quatre étudiants à part
 ## Qu'est-ce qu'Akdemia ?
 
 Akdemia est un tableau de bord destiné aux administrateurs d'un organisme de formation.
+
 Le but de ce tableau de bord est de leur permettre de gérer les intervenants, les formations, les sessions de formation, les thèmes des formations etc.
 
 ## Structure du projet
@@ -17,7 +18,7 @@ Le projet est divisé en trois parties :
 
 Vous êtes ici dans la partie front-end/Angular.
 
-# ---------------------------------------------------------------------------
+# ----------------------------------------------------------------
 
 # English presentation
 
